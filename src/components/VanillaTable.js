@@ -2,21 +2,8 @@ import React from 'react';
 import {fetchSession, fetchStudents} from "../api/dataApi";
 import logo from "../logo.svg";
 import _orderBy from 'lodash/orderBy';
+import {getFilteredRows} from "../store/selectors";
 
-
-export const getFilteredRows = (students, search) => {
-  if (!search) {
-    return students;
-  }
-
-  try {
-    const searchRegex = new RegExp(search); // no escaping is a feature!
-    return students.filter(row => [row.name, row.githubId, row.locationName].find(str => searchRegex.test(str)));
-  } catch (e) {
-    // ignore filter if regexp is not parsable
-    return students;
-  }
-};
 
 export default class VanillaTable extends React.PureComponent {
 

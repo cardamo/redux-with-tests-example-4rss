@@ -1,21 +1,8 @@
 import React from 'react';
-import PureTable from "./PureTable";
-
 import {connect} from 'react-redux'
 import actions from '../actions'
-import _orderBy from "lodash/orderBy";
-import {getFilteredRows} from "./VanillaTable";
-import {createSelector} from "@reduxjs/toolkit";
-
-const filterAndSort = (data, search, sort) => {
-  return _orderBy(getFilteredRows(data, search), sort[0], sort[1])
-};
-
-const rowsSelector = createSelector(
-  state => state.table,
-  state => state.students.data,
-  ({search, sort}, students) => filterAndSort(students, search, sort)
-);
+import PureTable from "./PureTable";
+import {rowsSelector} from "../store/selectors";
 
 const mapStateToProps = (state) => {
   let {search, sort} = state.table;

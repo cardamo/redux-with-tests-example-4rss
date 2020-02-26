@@ -1,11 +1,12 @@
-import React, {useEffect} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import logo from "../logo.svg";
 
 
 const PureTable = props => {
     const {loading, session, sort, search, rows, onSearchChange, onSort, onMount} = props;
 
-    useEffect(() => onMount(), []);
+    // useEffect(() => onMount(), []);
 
     if (loading) {
       return <img src={logo} className="App-logo" alt="logo"/>
@@ -54,6 +55,27 @@ const PureTable = props => {
         </tbody>
       </table>
     </div>
+};
+
+PureTable.propTypes = {
+  loading: PropTypes.bool,
+  session: PropTypes.object,
+  sort: PropTypes.array,
+  search: PropTypes.string,
+  rows: PropTypes.array,
+  onSearchChange: PropTypes.func,
+  onSort: PropTypes.func,
+  onMount: PropTypes.func,
+};
+
+export const defaultProps = {
+  loading: false,
+  search: '',
+  sort: [],
+  rows: [],
+  onSort: () => {},
+  onMount: () => {},
+  onSearchChange: () => {},
 };
 
 export default PureTable;

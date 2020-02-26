@@ -2,7 +2,7 @@ import faker from 'faker';
 
 faker.seed(781);
 
-const data = [...new Array(400)].map((_, idx) => {
+export const makeFake = (idx) => {
   return {
     "id": 11523 + idx,
     "rank": idx,
@@ -11,11 +11,11 @@ const data = [...new Array(400)].map((_, idx) => {
     "totalScore": 0,
     "locationName": faker.address.city(),
     "taskResults": [],
-    "isActive": faker.random.boolean(0.2)
+    "isActive": faker.random.boolean()
   };
-});
+};
 
-console.log(data);
+const data = [...new Array(500)].map((_, idx) => makeFake(idx));
 
 export default {
   "data": data
