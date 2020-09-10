@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import logo from "../logo.svg";
 
@@ -6,7 +6,7 @@ import logo from "../logo.svg";
 const PureTable = props => {
     const {loading, session, sort, search, rows, onSearchChange, onSort, onMount} = props;
 
-    // useEffect(() => onMount(), []);
+    useEffect(() => onMount(), [onMount]);
 
     if (loading) {
       return <img src={logo} className="App-logo" alt="logo"/>

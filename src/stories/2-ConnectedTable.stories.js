@@ -5,7 +5,6 @@ import createStore from './storyStore';
 import students from '../api/students';
 import session from '../api/session';
 import actions from '../actions';
-import qs from 'querystring';
 
 export default {
   title: 'ConnectedTable',
@@ -13,9 +12,7 @@ export default {
 
 const withStore = setup => () => {
   const store = createStore();
-  setup(store);
-
-
+  setTimeout(() => setup(store), 0);
 
   return <Provider store={store}>
     <div>

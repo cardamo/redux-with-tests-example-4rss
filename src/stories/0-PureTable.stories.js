@@ -8,6 +8,6 @@ export default {
   component: PureTable,
 };
 
-export const Loading = () => <PureTable loading={true}/>;
+export const Loading = () => <PureTable {...defaultProps} loading={true}/>;
 export const NoDataSortAsc = () => <PureTable {...defaultProps} sort={['locationName', 'asc']}/>;
 export const WithDataSortDesc = () => <PureTable {...defaultProps} rows={students.data.slice(0, 5)} sort={['githubId', 'desc']} />;
